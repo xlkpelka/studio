@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twoje Imię – UX/Product Designer</title>
+  <meta name="description" content="Portfolio UX/Product Design – case studies, proces, kontakt." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <nav class="container nav">
+    <a class="logo" href="#top">Twoje&nbsp;Imię</a>
+    <button class="nav-toggle" aria-label="Otwórz menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#work">Projekty</a></li>
+      <li><a href="#about">O mnie</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero container">
+    <div class="hero-text">
+      <h1>Projektuję proste, czytelne doświadczenia.</h1>
+      <p>Produkt/UX Design · Badania · Prototypowanie · Systemy projektowe</p>
+      <div class="cta">
+        <a class="btn" href="#work">Zobacz projekty</a>
+        <a class="btn btn-ghost" href="#contact">Skontaktuj się</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="assets/avatar.jpg" alt="Portret projektanta" />
+    </div>
+  </section>
+
+  <section id="work" class="container section">
+    <h2>Wybrane projekty</h2>
+    <div class="grid">
+      <article class="card">
+        <img src="assets/project1.jpg" alt="Miniatura projektu 1" />
+        <div class="card-body">
+          <h3>Aplikacja FinTech – onboarding bez tarcia</h3>
+          <p>Skrócenie czasu rejestracji o 42% dzięki testom z użytkownikami i iteracjom prototypu.</p>
+          <a class="link" href="#" target="_blank" rel="noopener">Case study →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="placeholder">Wkrótce</div>
+        <div class="card-body">
+          <h3>Panel B2B – refaktoryzacja informacji</h3>
+          <p>Nawigacja oparta o zadania, wzrost NPS o +18 pkt.</p>
+          <a class="link" href="#" target="_blank" rel="noopener">Case study →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="placeholder">Wkrótce</div>
+        <div class="card-body">
+          <h3>Sklep D2C – optymalizacja koszyka</h3>
+          <p>Zmiana architektury koszyka i checkoutu, +12% CR.</p>
+          <a class="link" href="#" target="_blank" rel="noopener">Case study →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="container section">
+    <h2>O mnie</h2>
+    <p>Jestem projektantem skoncentrowanym na rezultatach. Łączę badania jakościowe z szybkim prototypowaniem. Lubię
+      pracować blisko zespołów produktowych i developmentu.</p>
+    <ul class="list">
+      <li>🔎 Badania z użytkownikami i testy użyteczności</li>
+      <li>🧩 Systemy projektowe i design tokens</li>
+      <li>⚙️ Prototypy: Figma, Framer, interaktywne makiety</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="container section">
+    <h2>Kontakt</h2>
+    <p>Otwarty na współpracę i konsultacje. Napisz:</p>
+    <p><a class="btn" href="mailto:twoj.mail@example.com">twoj.mail@example.com</a></p>
+    <p>Lub znajdź mnie na <a class="link" href="#" target="_blank" rel="noopener">LinkedIn</a>.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <small>© <span id="year"></span> Twoje Imię. Wszystkie prawa zastrzeżone.</small>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const btn = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  btn.addEventListener('click', () => links.classList.toggle('open'));
+</script>
+</body>
+</html>
