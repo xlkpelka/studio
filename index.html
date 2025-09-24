@@ -3,109 +3,219 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Twoje Imię – UX/Product Designer</title>
-  <meta name="description" content="Portfolio UX/Product Design – case studies, proces, kontakt." />
+
+  <title>e-medycyna — nowoczesne studio i usługi medyczne</title>
+  <meta name="description" content="Rezerwacje online, przejrzysty cennik i konsultacje. Szybki kontakt i terminy. Sprawdź ofertę e-medycyna." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="e-medycyna — studio / usługi medyczne">
+  <meta property="og:description" content="Rezerwacje online, cennik, konsultacje.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://twojadomena.pl">
+  <meta property="og:image" content="https://twojadomena.pl/og.jpg">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* KOLORY */
+      --brand:#8075ed;            /* główny akcent */
+      --text:#ffffff;             /* tekst na ciemnym */
+      --muted:rgba(255,255,255,.85);
+      --bg:#0b0f14;               /* tło */
+      --surface:#0e1522;          /* karty */
+      --border:rgba(255,255,255,.12);
+      --overlay:rgba(0,0,0,.45);  /* przyciemnienie hero */
+      --outline:#ffffff;          /* obrys tytułu */
+      --wa:#25D366;               /* WhatsApp */
+    }
+
+    /* RESET / BAZA */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6; letter-spacing:.01em;
+      text-rendering:optimizeLegibility;
+    }
+    img{max-width:100%; height:auto; display:block}
+    a{color:inherit}
+
+    /* LAYOUT */
+    .container{max-width:1200px; margin:auto; padding:clamp(16px,3vw,32px)}
+    .btn{
+      background:var(--brand); color:#fff; padding:.85rem 1.15rem; border-radius:.9rem;
+      border:1px solid var(--border); text-decoration:none; display:inline-block; font-weight:600
+    }
+    .btn.ghost{background:transparent; color:var(--text)}
+    .btn.full{display:block; text-align:center; width:100%}
+
+    /* HEADER */
+    .site-header{position:sticky; top:0; z-index:50; background:rgba(11,15,20,.7); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid var(--border)}
+    .nav{display:flex; gap:1rem; align-items:center; justify-content:space-between}
+    .logo{color:var(--text); font-weight:800; text-decoration:none; letter-spacing:.02em}
+    .main-nav{display:flex; gap:.5rem; align-items:center}
+    .main-nav a{padding:.45rem .7rem; text-decoration:none; border-radius:.6rem}
+    .main-nav a:hover{background:rgba(255,255,255,.06)}
+    .burger{display:none; background:transparent; border:1px solid var(--border); color:var(--text); padding:.5rem .7rem; border-radius:.6rem}
+
+    /* HERO */
+    .hero{position:relative; isolation:isolate; background:
+      radial-gradient(1200px 600px at 80% -20%, rgba(128,117,237,.25), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%)}
+    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:min(5vw,48px); align-items:center}
+    .hero-title{
+      font-size:clamp(36px,5.2vw,64px); line-height:1.05; margin:0 0 .6rem; text-wrap:balance;
+      text-shadow:0 1px 0 rgba(0,0,0,.2)
+    }
+    .hero-sub{color:var(--muted); max-width:58ch; margin:0 0 1.1rem}
+    .hero-media img{border-radius:1.2rem; border:1px solid var(--border)}
+
+    /* SEKCJA: USŁUGI */
+    .section{padding-block:clamp(28px,6vw,72px)}
+    .section h2{font-size:clamp(24px,3.4vw,36px); margin:0 0 1rem; text-wrap:balance}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:min(3vw,20px)}
+    .card{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem; display:flex; flex-direction:column; gap:.6rem}
+    .card img{border-radius:.6rem}
+    .card h3{margin:.2rem 0 .2rem; font-size:1.1rem}
+    .card .link{color:var(--brand); text-decoration:none; font-weight:600}
+
+    /* TRUST */
+    .logo-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:min(3vw,24px); align-items:center; list-style:none; margin:0; padding:0}
+    .logo-strip img{max-height:36px; width:auto; opacity:.9; filter:grayscale(1)}
+
+    /* CENNIK */
+    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:min(3vw,20px)}
+    .price{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem}
+    .price h3{margin:.2rem 0}
+    .price .amount{font-size:1.75rem; font-weight:800; margin:.4rem 0}
+    .price ul{margin:.6rem 0 0; padding-left:1.1rem}
+    .badge{display:inline-block; font-size:.8rem; padding:.2rem .5rem; border:1px solid var(--border); border-radius:.6rem; margin-left:.5rem}
+
+    /* FAQ */
+    details.faq{background:var(--surface); border:1px solid var(--border); border-radius:.9rem; padding:.8rem 1rem}
+    details.faq + details.faq{margin-top:.6rem}
+    details.faq summary{cursor:pointer; font-weight:600}
+    details.faq[open]{box-shadow:0 10px 30px rgba(0,0,0,.18)}
+
+    /* KONTAKT */
+    .contact-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:min(3vw,20px)}
+    .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem}
+    .contact-list{list-style:none; margin:0; padding:0; display:grid; gap:.6rem}
+    .contact-list a{text-decoration:none}
+    .whatsapp{color:#000; background:var(--wa); border-color:transparent}
+    .map{border:1px solid var(--border); border-radius:1rem; overflow:hidden}
+
+    /* STOPKA */
+    footer{border-top:1px solid var(--border); color:var(--muted); padding-block:24px}
+    .foot{display:grid; grid-template-columns:2fr 1fr 1fr; gap:20px; align-items:start}
+    .foot a{text-decoration:none}
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width:1024px){
+      .hero-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:760px){
+      .cards{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .logo-strip{grid-template-columns:repeat(3,1fr)}
+      .main-nav{display:none}
+      .burger{display:inline-flex}
+      .main-nav.open{display:flex; position:absolute; right:16px; top:64px; flex-direction:column;
+        background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:.6rem; gap:.2rem}
+      .main-nav.open a{padding:.6rem .8rem}
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <nav class="container nav" aria-label="Główna nawigacja">
-    <a class="logo" href="#top">Twoje&nbsp;Imię</a>
-    <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false">☰</button>
-    <ul class="nav-links">
-      <li><a href="#work">Projekty</a></li>
-      <li><a href="#about">O mnie</a></li>
-      <li><a href="#contact">Kontakt</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main id="top">
-  <section class="hero container">
-    <div class="hero-text">
-      <h1>Projektuję proste, czytelne doświadczenia.</h1>
-      <p>Produkt/UX Design · Badania · Prototypowanie · Systemy projektowe</p>
-      <div class="cta">
-        <a class="btn" href="#work">Zobacz projekty</a>
-        <a class="btn btn-ghost" href="#contact">Skontaktuj się</a>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="/" aria-label="Strona główna e-medycyna">e-medycyna</a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Główne menu">
+        <a href="#uslugi">Usługi</a>
+        <a href="#cennik">Cennik</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="btn" href="#umow" id="umowTop">Umów wizytę</a>
+      </nav>
+
+      <button class="burger" aria-controls="mainNav" aria-expanded="false" id="burgerBtn">Menu</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="umow">
+    <div class="container hero-grid">
+      <div>
+        <h1 class="hero-title">Robimy medycynę prostą.</h1>
+        <p class="hero-sub">Rezerwacje online, przejrzysty cennik i specjaliści na wyciągnięcie ręki. Zadbaj o zdrowie bez zbędnych formalności.</p>
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap">
+          <a class="btn" href="#kontakt">Umów wizytę</a>
+          <a class="btn ghost" href="#cennik" aria-label="Przejdź do cennika">Zobacz cennik</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="/assets/hero.webp" width="1200" height="900" alt="Nowoczesne studio medyczne z recepcją i gabinetem" loading="eager" decoding="async">
       </div>
     </div>
-    <div class="hero-img">
-      <img src="assets/avatar.jpg" alt="Portret projektanta" />
+  </section>
+
+  <!-- USŁUGI -->
+  <section id="uslugi" class="section">
+    <div class="container">
+      <h2>Jak możemy pomóc?</h2>
+      <div class="cards">
+        <article class="card">
+          <img src="/assets/srv1.webp" width="800" height="550" alt="Rezerwacje online — wybór terminu i specjalisty" loading="lazy" decoding="async">
+          <h3>Rezerwacje online</h3>
+          <p>Wybierz termin i specjalistę bez dzwonienia — potwierdzenie otrzymasz SMS-em i e-mailem.</p>
+          <a class="link" href="#kontakt">Czytaj więcej →</a>
+        </article>
+
+        <article class="card">
+          <img src="/assets/srv2.webp" width="800" height="550" alt="Cennik usług medycznych" loading="lazy" decoding="async">
+          <h3>Cennik</h3>
+          <p>Przejrzyście, bez zaskoczeń. Płatność kartą, BLIK lub online. Zniżki pakietowe.</p>
+          <a class="link" href="#cennik">Czytaj więcej →</a>
+        </article>
+
+        <article class="card">
+          <img src="/assets/srv3.webp" width="800" height="550" alt="Konsultacje online — szybka teleporada" loading="lazy" decoding="async">
+          <h3>Konsultacje online</h3>
+          <p>Teleporada i e-recepta bez wychodzenia z domu — wygodnie i bezpiecznie.</p>
+          <a class="link" href="#faq">Czytaj więcej →</a>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section id="work" class="container section">
-    <h2>Wybrane projekty</h2>
-    <div class="grid">
-      <article class="card">
-        <img src="assets/project1.jpg" alt="Miniatura projektu 1" />
-        <div class="card-body">
-          <h3>Aplikacja FinTech – onboarding bez tarcia</h3>
-          <p>Skrócenie czasu rejestracji o 42% dzięki testom z użytkownikami i iteracjom prototypu.</p>
-          <a class="link" href="#" target="_blank" rel="noopener">Case study →</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="placeholder">Wkrótce</div>
-        <div class="card-body">
-          <h3>Panel B2B – refaktoryzacja informacji</h3>
-          <p>Nawigacja oparta o zadania, wzrost NPS o +18 pkt.</p>
-          <a class="link" href="#" target="_blank" rel="noopener">Case study →</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="placeholder">Wkrótce</div>
-        <div class="card-body">
-          <h3>Sklep D2C – optymalizacja koszyka</h3>
-          <p>Zmiana architektury koszyka i checkoutu, +12% CR.</p>
-          <a class="link" href="#" target="_blank" rel="noopener">Case study →</a>
-        </div>
-      </article>
+  <!-- ZAUFALI NAM -->
+  <section aria-label="Zaufali nam" class="section">
+    <div class="container">
+      <h2 class="sr-only" style="position:absolute; left:-9999px; top:auto">Zaufali nam</h2>
+      <ul class="logo-strip">
+        <li><img src="/assets/logo1.svg" width="160" height="40" alt="Partner 1" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo2.svg" width="160" height="40" alt="Partner 2" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo3.svg" width="160" height="40" alt="Partner 3" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo4.svg" width="160" height="40" alt="Partner 4" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo5.svg" width="160" height="40" alt="Partner 5" loading="lazy" decoding="async"></li>
+      </ul>
     </div>
   </section>
 
-  <section id="about" class="container section">
-    <h2>O mnie</h2>
-    <p>Jestem projektantem skoncentrowanym na rezultatach. Łączę badania jakościowe z szybkim prototypowaniem. Lubię
-      pracować blisko zespołów produktowych i developmentu.</p>
-    <ul class="list">
-      <li>🔎 Badania z użytkownikami i testy użyteczności</li>
-      <li>🧩 Systemy projektowe i design tokens</li>
-      <li>⚙️ Prototypy: Figma, Framer, interaktywne makiety</li>
-    </ul>
-  </section>
+  <!-- CENNIK -->
+  <section id="cennik" class="section">
+    <div class="container">
+      <h2>Cennik</h2>
+      <div class="
 
-  <section id="contact" class="container section">
-    <h2>Kontakt</h2>
-    <p>Otwarty na współpracę i konsultacje. Napisz:</p>
-    <p><a class="btn" href="mailto:twoj.mail@example.com">twoj.mail@example.com</a></p>
-    <p>Lub znajdź mnie na <a class="link" href="#" target="_blank" rel="noopener">LinkedIn</a>.</p>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <small>© <span id="year"></span> Twoje Imię. Wszystkie prawa zastrzeżone.</small>
-  </div>
-</footer>
-
-<script>
-  // Bezpiecznie ustaw rok
-  const yearEl = document.getElementById('year');
-  if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
-
-  // Toggle menu (bez błędów gdy brak elementów)
-  const btn = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  if (btn && links) {
-    btn.addEventListener('click', () => {
-      const opened = links.classList.toggle('open');
-      btn.setAttribute('aria-expanded', opened ? 'true' : 'false');
-    });
-  }
-</script>
-</body>
-</html>
+        
