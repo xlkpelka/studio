@@ -11,9 +11,9 @@
 </head>
 <body>
 <header class="site-header">
-  <nav class="container nav">
+  <nav class="container nav" aria-label="Główna nawigacja">
     <a class="logo" href="#top">Twoje&nbsp;Imię</a>
-    <button class="nav-toggle" aria-label="Otwórz menu">☰</button>
+    <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false">☰</button>
     <ul class="nav-links">
       <li><a href="#work">Projekty</a></li>
       <li><a href="#about">O mnie</a></li>
@@ -93,10 +93,19 @@
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // Bezpiecznie ustaw rok
+  const yearEl = document.getElementById('year');
+  if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+
+  // Toggle menu (bez błędów gdy brak elementów)
   const btn = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
-  btn.addEventListener('click', () => links.classList.toggle('open'));
+  if (btn && links) {
+    btn.addEventListener('click', () => {
+      const opened = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+  }
 </script>
 </body>
 </html>
